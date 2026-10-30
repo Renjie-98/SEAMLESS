@@ -1,4 +1,3 @@
-# Figure SI1 data
 """Figure SI1: serial runtime benchmark of six original dismantling methods."""
 
 # ============================================================
