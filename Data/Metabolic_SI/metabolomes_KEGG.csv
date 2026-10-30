@@ -1,0 +1,108 @@
+aae;Aquifex aeolicus;Prokaryotes;Bacteria
+afu;Archaeoglobus fulgidus DSM 4304;Prokaryotes;Archaea
+ana;Nostoc sp. PCC 7120;Prokaryotes;Bacteria
+ape;Aeropyrum pernix;Prokaryotes;Archaea
+ath;Arabidopsis thaliana (thale cress);Eukaryotes;Plants
+atu;Agrobacterium fabrum;Prokaryotes;Bacteria
+bas;Buchnera aphidicola Sg (Schizaphis graminum);Prokaryotes;Bacteria
+bbu;Borreliella burgdorferi B31;Prokaryotes;Bacteria
+bha;Alkalihalobacillus halodurans;Prokaryotes;Bacteria
+bja;Bradyrhizobium diazoefficiens USDA 110;Prokaryotes;Bacteria
+blo;Bifidobacterium longum NCC2705;Prokaryotes;Bacteria
+bme;Brucella melitensis bv. 1 16M;Prokaryotes;Bacteria
+bms;Brucella suis 1330;Prokaryotes;Bacteria
+bsu;Bacillus subtilis subsp. subtilis 168;Prokaryotes;Bacteria
+buc;Buchnera aphidicola APS (Acyrthosiphon pisum);Prokaryotes;Bacteria
+cac;Clostridium acetobutylicum ATCC 824;Prokaryotes;Bacteria
+ccr;Caulobacter vibrioides CB15;Prokaryotes;Bacteria
+cef;Corynebacterium efficiens;Prokaryotes;Bacteria
+cel;Caenorhabditis elegans (nematode);Eukaryotes;Animals
+cgl;Corynebacterium glutamicum ATCC 13032 (Kyowa Hakko);Prokaryotes;Bacteria
+cje;Campylobacter jejuni subsp. jejuni NCTC 11168 = ATCC 700819;Prokaryotes;Bacteria
+cmu;Chlamydia muridarum Nigg;Prokaryotes;Bacteria
+cpa;Chlamydia pneumoniae AR39;Prokaryotes;Bacteria
+cpe;Clostridium perfringens 13;Prokaryotes;Bacteria
+cpj;Chlamydia pneumoniae J138;Prokaryotes;Bacteria
+cpn;Chlamydia pneumoniae CWL029;Prokaryotes;Bacteria
+cte;Chlorobaculum tepidum;Prokaryotes;Bacteria
+ctr;Chlamydia trachomatis D/UW-3/CX;Prokaryotes;Bacteria
+dme;Drosophila melanogaster (fruit fly);Eukaryotes;Animals
+dra;Deinococcus radiodurans;Prokaryotes;Bacteria
+ecc;Escherichia coli O6:K2:H1 CFT073 (UPEC);Prokaryotes;Bacteria
+ece;Escherichia coli O157:H7 EDL933 (EHEC);Prokaryotes;Bacteria
+ecj;Escherichia coli K-12 W3110;Prokaryotes;Bacteria
+eco;Escherichia coli K-12 MG1655;Prokaryotes;Bacteria
+ecs;Escherichia coli O157:H7 Sakai (EHEC);Prokaryotes;Bacteria
+fnu;Fusobacterium nucleatum subsp. nucleatum ATCC 25586;Prokaryotes;Bacteria
+hal;Halobacterium salinarum NRC-1;Prokaryotes;Archaea
+hin;Haemophilus influenzae Rd KW20 (serotype d);Prokaryotes;Bacteria
+hpj;Helicobacter pylori J99;Prokaryotes;Bacteria
+hpy;Helicobacter pylori 26695;Prokaryotes;Bacteria
+hsa;Homo sapiens (human);Eukaryotes;Animals
+lil;Leptospira interrogans serovar Lai 56601;Prokaryotes;Bacteria
+lin;Listeria innocua (serotype 6a);Prokaryotes;Bacteria
+lla;Lactococcus lactis subsp. lactis Il1403;Prokaryotes;Bacteria
+lmo;Listeria monocytogenes EGD-e (serotype 1/2a);Prokaryotes;Bacteria
+mac;Methanosarcina acetivorans;Prokaryotes;Archaea
+mge;Mycoplasma genitalium G37;Prokaryotes;Bacteria
+mja;Methanocaldococcus jannaschii;Prokaryotes;Archaea
+mka;Methanopyrus kandleri;Prokaryotes;Archaea
+mle;Mycobacterium leprae TN;Prokaryotes;Bacteria
+mlo;Mesorhizobium japonicum MAFF 303099;Prokaryotes;Bacteria
+mma;Methanosarcina mazei Go1;Prokaryotes;Archaea
+mmu;Mus musculus (mouse);Eukaryotes;Animals
+mpe;Mycoplasma penetrans;Prokaryotes;Bacteria
+mpn;Mycoplasma pneumoniae M129;Prokaryotes;Bacteria
+mpu;Mycoplasma pulmonis;Prokaryotes;Bacteria
+mtc;Mycobacterium tuberculosis CDC1551;Prokaryotes;Bacteria
+mth;Methanothermobacter thermautotrophicus;Prokaryotes;Archaea
+mtu;Mycobacterium tuberculosis H37Rv;Prokaryotes;Bacteria
+nma;Neisseria meningitidis Z2491 (serogroup A);Prokaryotes;Bacteria
+nme;Neisseria meningitidis MC58 (serogroup B);Prokaryotes;Bacteria
+oih;Oceanobacillus iheyensis;Prokaryotes;Bacteria
+pab;Pyrococcus abyssi;Prokaryotes;Archaea
+pae;Pseudomonas aeruginosa PAO1;Prokaryotes;Bacteria
+pai;Pyrobaculum aerophilum;Prokaryotes;Archaea
+pfu;Pyrococcus furiosus DSM 3638;Prokaryotes;Archaea
+pho;Pyrococcus horikoshii;Prokaryotes;Archaea
+pmu;Pasteurella multocida subsp. multocida Pm70;Prokaryotes;Bacteria
+rco;Rickettsia conorii;Prokaryotes;Bacteria
+rno;Rattus norvegicus (rat);Eukaryotes;Animals
+rpr;Rickettsia prowazekii Madrid E;Prokaryotes;Bacteria
+rso;Ralstonia solanacearum GMI1000;Prokaryotes;Bacteria
+sag;Streptococcus agalactiae 2603 (serotype V);Prokaryotes;Bacteria
+sam;Staphylococcus aureus subsp. aureus MW2 (CA-MRSA);Prokaryotes;Bacteria
+san;Streptococcus agalactiae NEM316 (serotype III);Prokaryotes;Bacteria
+sau;Staphylococcus aureus subsp. aureus N315 (MRSA/VSSA);Prokaryotes;Bacteria
+sav;Staphylococcus aureus subsp. aureus Mu50 (MRSA/VISA);Prokaryotes;Bacteria
+sce;Saccharomyces cerevisiae (budding yeast);Eukaryotes;Fungi
+sco;Streptomyces coelicolor;Prokaryotes;Bacteria
+sfl;Shigella flexneri 301 (serotype 2a);Prokaryotes;Bacteria
+sme;Sinorhizobium meliloti 1021;Prokaryotes;Bacteria
+smu;Streptococcus mutans UA159 (serotype c);Prokaryotes;Bacteria
+son;Shewanella oneidensis;Prokaryotes;Bacteria
+spg;Streptococcus pyogenes MGAS315 (serotype M3);Prokaryotes;Bacteria
+spm;Streptococcus pyogenes MGAS8232 (serotype M18);Prokaryotes;Bacteria
+spn;Streptococcus pneumoniae TIGR4 (virulent serotype 4);Prokaryotes;Bacteria
+spo;Schizosaccharomyces pombe (fission yeast);Eukaryotes;Fungi
+spr;Streptococcus pneumoniae R6 (avirulent serotype 2);Prokaryotes;Bacteria
+spy;Streptococcus pyogenes M1 GAS (serotype M1);Prokaryotes;Bacteria
+sso;Saccharolobus solfataricus P2;Prokaryotes;Archaea
+stm;Salmonella enterica subsp. enterica serovar Typhimurium LT2;Prokaryotes;Bacteria
+sto;Sulfurisphaera tokodaii;Prokaryotes;Archaea
+sty;Salmonella enterica subsp. enterica serovar Typhi CT18;Prokaryotes;Bacteria
+syn;Synechocystis sp. PCC 6803;Prokaryotes;Bacteria
+tac;Thermoplasma acidophilum;Prokaryotes;Archaea
+tel;Thermosynechococcus elongatus;Prokaryotes;Bacteria
+tma;Thermotoga maritima MSB8;Prokaryotes;Bacteria
+tpa;Treponema pallidum subsp. pallidum Nichols;Prokaryotes;Bacteria
+tte;Caldanaerobacter subterraneus subsp. tengcongensis;Prokaryotes;Bacteria
+tvo;Thermoplasma volcanium;Prokaryotes;Archaea
+uur;Ureaplasma parvum serovar 3 ATCC 700970;Prokaryotes;Bacteria
+vch;Vibrio cholerae O1 El Tor N16961;Prokaryotes;Bacteria
+wbr;Wigglesworthia glossinidia endosymbiont of Glossina brevipalpis;Prokaryotes;Bacteria
+xac;Xanthomonas citri pv. citri 306;Prokaryotes;Bacteria
+xcc;Xanthomonas campestris pv. campestris ATCC 33913;Prokaryotes;Bacteria
+xfa;Xylella fastidiosa 9a5c;Prokaryotes;Bacteria
+ype;Yersinia pestis CO92 (biovar Orientalis);Prokaryotes;Bacteria
+ypk;Yersinia pestis KIM10+ (biovar Mediaevalis);Prokaryotes;Bacteria

@@ -1,0 +1,109 @@
+﻿KEGG_ID,Species_name,Cellular_group,Domain,Protein_coding_genes,Unique_KEGG_Orthology_groups,Unique_Enzyme_Commission_numbers,KEGG_pathways,KEGG_modules
+aae,Aquifex aeolicus,Prokaryotes,Bacteria,1553,959,517,107,33
+afu,Archaeoglobus fulgidus DSM 4304,Prokaryotes,Archaea,2407,1025,491,108,30
+ana,Nostoc sp. PCC 7120,Prokaryotes,Bacteria,6132,1566,784,130,58
+ape,Aeropyrum pernix,Prokaryotes,Archaea,1700,805,399,105,26
+ath,Arabidopsis thaliana (thale cress),Eukaryotes,Plants,27562,4386,1316,162,125
+atu,Agrobacterium fabrum,Prokaryotes,Bacteria,5355,2064,940,134,77
+bas,Buchnera aphidicola Sg (Schizaphis graminum),Prokaryotes,Bacteria,545,549,282,85,21
+bbu,Borreliella burgdorferi B31,Prokaryotes,Bacteria,1339,480,200,68,7
+bha,Alkalihalobacillus halodurans,Prokaryotes,Bacteria,4066,1832,817,125,71
+bja,Bradyrhizobium diazoefficiens USDA 110,Prokaryotes,Bacteria,8317,2182,1056,142,83
+blo,Bifidobacterium longum NCC2705,Prokaryotes,Bacteria,1729,881,470,112,33
+bme,Brucella melitensis bv. 1 16M,Prokaryotes,Bacteria,3198,1642,807,126,74
+bms,Brucella suis 1330,Prokaryotes,Bacteria,3273,1598,796,126,68
+bsu,Bacillus subtilis subsp. subtilis 168,Prokaryotes,Bacteria,4174,2131,860,128,84
+buc,Buchnera aphidicola APS (Acyrthosiphon pisum),Prokaryotes,Bacteria,574,571,298,86,25
+cac,Clostridium acetobutylicum ATCC 824,Prokaryotes,Bacteria,3848,1450,689,113,48
+ccr,Caulobacter vibrioides CB15,Prokaryotes,Bacteria,3737,1599,791,138,64
+cef,Corynebacterium efficiens,Prokaryotes,Bacteria,2998,1289,704,128,62
+cel,Caenorhabditis elegans (nematode),Eukaryotes,Animals,19983,4432,918,153,72
+cgl,Corynebacterium glutamicum ATCC 13032 (Kyowa Hakko),Prokaryotes,Bacteria,3099,1283,701,124,62
+cje,Campylobacter jejuni subsp. jejuni NCTC 11168 = ATCC 700819,Prokaryotes,Bacteria,1572,1054,543,106,49
+cmu,Chlamydia muridarum Nigg,Prokaryotes,Bacteria,911,560,285,79,17
+cpa,Chlamydia pneumoniae AR39,Prokaryotes,Bacteria,1110,572,293,79,16
+cpe,Clostridium perfringens 13,Prokaryotes,Bacteria,2723,1253,605,109,32
+cpj,Chlamydia pneumoniae J138,Prokaryotes,Bacteria,1069,572,296,79,17
+cpn,Chlamydia pneumoniae CWL029,Prokaryotes,Bacteria,1052,571,294,79,16
+cte,Chlorobaculum tepidum,Prokaryotes,Bacteria,2255,1056,581,111,46
+ctr,Chlamydia trachomatis D/UW-3/CX,Prokaryotes,Bacteria,887,564,287,79,14
+dme,Drosophila melanogaster (fruit fly),Eukaryotes,Animals,13986,5708,993,161,82
+dra,Deinococcus radiodurans,Prokaryotes,Bacteria,3101,1220,642,114,48
+ecc,Escherichia coli O6:K2:H1 CFT073 (UPEC),Prokaryotes,Bacteria,5379,2948,1087,138,100
+ece,Escherichia coli O157:H7 EDL933 (EHEC),Prokaryotes,Bacteria,5449,3073,1100,140,110
+ecj,Escherichia coli K-12 W3110,Prokaryotes,Bacteria,4226,3038,1116,138,112
+eco,Escherichia coli K-12 MG1655,Prokaryotes,Bacteria,4288,3047,1115,138,112
+ecs,Escherichia coli O157:H7 Sakai (EHEC),Prokaryotes,Bacteria,5155,3033,1093,140,110
+fnu,Fusobacterium nucleatum subsp. nucleatum ATCC 25586,Prokaryotes,Bacteria,2067,971,489,99,24
+hal,Halobacterium salinarum NRC-1,Prokaryotes,Archaea,2605,975,506,112,32
+hin,Haemophilus influenzae Rd KW20 (serotype d),Prokaryotes,Bacteria,1709,1288,603,111,49
+hpj,Helicobacter pylori J99,Prokaryotes,Bacteria,1491,900,449,103,39
+hpy,Helicobacter pylori 26695,Prokaryotes,Bacteria,1566,912,449,104,36
+hsa,Homo sapiens (human),Eukaryotes,Animals,20091,12802,1475,372,131
+lil,Leptospira interrogans serovar Lai 56601,Prokaryotes,Bacteria,3706,1107,593,119,44
+lin,Listeria innocua (serotype 6a),Prokaryotes,Bacteria,3043,1421,664,114,48
+lla,Lactococcus lactis subsp. lactis Il1403,Prokaryotes,Bacteria,2266,1085,560,113,34
+lmo,Listeria monocytogenes EGD-e (serotype 1/2a),Prokaryotes,Bacteria,2867,1431,675,118,50
+mac,Methanosarcina acetivorans,Prokaryotes,Archaea,4540,1204,582,113,43
+mge,Mycoplasma genitalium G37,Prokaryotes,Bacteria,476,362,158,59,6
+mja,Methanocaldococcus jannaschii,Prokaryotes,Archaea,1770,959,469,92,36
+mka,Methanopyrus kandleri,Prokaryotes,Archaea,1687,852,433,89,25
+mle,Mycobacterium leprae TN,Prokaryotes,Bacteria,1605,949,555,127,52
+mlo,Mesorhizobium japonicum MAFF 303099,Prokaryotes,Bacteria,7281,2151,1018,138,85
+mma,Methanosarcina mazei Go1,Prokaryotes,Archaea,3371,1172,566,111,43
+mmu,Mus musculus (mouse),Eukaryotes,Animals,22321,12562,1462,368,130
+mpe,Mycoplasma penetrans,Prokaryotes,Bacteria,1037,493,249,70,6
+mpn,Mycoplasma pneumoniae M129,Prokaryotes,Bacteria,688,377,173,61,6
+mpu,Mycoplasma pulmonis,Prokaryotes,Bacteria,782,420,191,59,6
+mtc,Mycobacterium tuberculosis CDC1551,Prokaryotes,Bacteria,4189,1551,804,142,77
+mth,Methanothermobacter thermautotrophicus,Prokaryotes,Archaea,1869,966,481,98,32
+mtu,Mycobacterium tuberculosis H37Rv,Prokaryotes,Bacteria,3906,1600,806,143,78
+nma,Neisseria meningitidis Z2491 (serogroup A),Prokaryotes,Bacteria,1909,1149,589,115,61
+nme,Neisseria meningitidis MC58 (serogroup B),Prokaryotes,Bacteria,2063,1154,589,115,60
+oih,Oceanobacillus iheyensis,Prokaryotes,Bacteria,3496,1714,772,127,66
+pab,Pyrococcus abyssi,Prokaryotes,Archaea,1784,918,440,101,29
+pae,Pseudomonas aeruginosa PAO1,Prokaryotes,Bacteria,5572,2655,1083,139,105
+pai,Pyrobaculum aerophilum,Prokaryotes,Archaea,2605,868,461,111,33
+pfu,Pyrococcus furiosus DSM 3638,Prokaryotes,Archaea,2065,970,467,101,33
+pho,Pyrococcus horikoshii,Prokaryotes,Archaea,2061,865,407,99,25
+pmu,Pasteurella multocida subsp. multocida Pm70,Prokaryotes,Bacteria,2014,1497,697,116,63
+rco,Rickettsia conorii,Prokaryotes,Bacteria,1374,643,276,86,18
+rno,Rattus norvegicus (rat),Eukaryotes,Animals,23167,12530,1465,368,129
+rpr,Rickettsia prowazekii Madrid E,Prokaryotes,Bacteria,834,601,262,87,18
+rso,Ralstonia solanacearum GMI1000,Prokaryotes,Bacteria,5120,2066,935,140,81
+sag,Streptococcus agalactiae 2603 (serotype V),Prokaryotes,Bacteria,2124,1104,501,110,32
+sam,Staphylococcus aureus subsp. aureus MW2 (CA-MRSA),Prokaryotes,Bacteria,2632,1430,669,118,69
+san,Streptococcus agalactiae NEM316 (serotype III),Prokaryotes,Bacteria,2094,1104,500,109,33
+sau,Staphylococcus aureus subsp. aureus N315 (MRSA/VSSA),Prokaryotes,Bacteria,2624,1432,672,118,71
+sav,Staphylococcus aureus subsp. aureus Mu50 (MRSA/VISA),Prokaryotes,Bacteria,2733,1437,673,118,72
+sce,Saccharomyces cerevisiae (budding yeast),Eukaryotes,Fungi,6021,3439,859,142,85
+sco,Streptomyces coelicolor,Prokaryotes,Bacteria,8154,1888,1005,150,77
+sfl,Shigella flexneri 301 (serotype 2a),Prokaryotes,Bacteria,4313,2644,993,137,93
+sme,Sinorhizobium meliloti 1021,Prokaryotes,Bacteria,6233,2190,1012,134,84
+smu,Streptococcus mutans UA159 (serotype c),Prokaryotes,Bacteria,1962,1084,512,110,34
+son,Shewanella oneidensis,Prokaryotes,Bacteria,4196,1996,845,128,82
+spg,Streptococcus pyogenes MGAS315 (serotype M3),Prokaryotes,Bacteria,1865,1012,450,108,23
+spm,Streptococcus pyogenes MGAS8232 (serotype M18),Prokaryotes,Bacteria,1845,981,450,107,23
+spn,Streptococcus pneumoniae TIGR4 (virulent serotype 4),Prokaryotes,Bacteria,2125,1087,508,103,39
+spo,Schizosaccharomyces pombe (fission yeast),Eukaryotes,Fungi,5124,2880,787,140,67
+spr,Streptococcus pneumoniae R6 (avirulent serotype 2),Prokaryotes,Bacteria,2043,1084,514,106,41
+spy,Streptococcus pyogenes M1 GAS (serotype M1),Prokaryotes,Bacteria,1693,1009,448,108,21
+sso,Saccharolobus solfataricus P2,Prokaryotes,Archaea,2994,959,525,119,38
+stm,Salmonella enterica subsp. enterica serovar Typhimurium LT2,Prokaryotes,Bacteria,4554,2939,1126,139,109
+sto,Sulfurisphaera tokodaii,Prokaryotes,Archaea,2816,928,504,113,38
+sty,Salmonella enterica subsp. enterica serovar Typhi CT18,Prokaryotes,Bacteria,4766,2804,1079,136,105
+syn,Synechocystis sp. PCC 6803,Prokaryotes,Bacteria,3564,1377,702,128,62
+tac,Thermoplasma acidophilum,Prokaryotes,Archaea,1478,723,407,102,27
+tel,Thermosynechococcus elongatus,Prokaryotes,Bacteria,2475,1176,623,124,55
+tma,Thermotoga maritima MSB8,Prokaryotes,Bacteria,1846,1041,534,108,32
+tpa,Treponema pallidum subsp. pallidum Nichols,Prokaryotes,Bacteria,1031,570,230,77,9
+tte,Caldanaerobacter subterraneus subsp. tengcongensis,Prokaryotes,Bacteria,2588,1266,596,110,37
+tvo,Thermoplasma volcanium,Prokaryotes,Archaea,1526,759,420,101,29
+uur,Ureaplasma parvum serovar 3 ATCC 700970,Prokaryotes,Bacteria,611,380,153,46,3
+vch,Vibrio cholerae O1 El Tor N16961,Prokaryotes,Bacteria,3828,2102,856,126,83
+wbr,Wigglesworthia glossinidia endosymbiont of Glossina brevipalpis,Prokaryotes,Bacteria,611,606,326,86,28
+xac,Xanthomonas citri pv. citri 306,Prokaryotes,Bacteria,4429,1919,890,137,82
+xcc,Xanthomonas campestris pv. campestris ATCC 33913,Prokaryotes,Bacteria,4181,1882,900,139,86
+xfa,Xylella fastidiosa 9a5c,Prokaryotes,Bacteria,2832,1228,587,113,59
+ype,Yersinia pestis CO92 (biovar Orientalis),Prokaryotes,Bacteria,4083,2386,958,134,82
+ypk,Yersinia pestis KIM10+ (biovar Mediaevalis),Prokaryotes,Bacteria,4205,2377,963,133,82
