@@ -1,4 +1,3 @@
-# Figure SI1
 """SEAMLESS Figure SI1: performance, empirical runtime, and computational complexity.
 Data
 ----
