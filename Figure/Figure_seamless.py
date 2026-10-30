@@ -65,14 +65,12 @@ def toy_network():
     inv = {v:k for k,v in mapping.items()}
     for i, name in enumerate(('11','12','5'), 1):
         pos[inv[name]] = np.asarray(pos[inv['10']]) + i*np.array([.45,.72])
-    rows = []
-    for u in sorted(pos, key=lambda v: (-pos[v][1], pos[v][0])):
-        if rows and abs(pos[u][1] - np.mean([pos[v][1] for v in rows[-1]])) <= .55:
-            rows[-1].append(u)
-        else:
-            rows.append([u])
-    labels = {u:str(i) for i,u in enumerate(
-        [v for row in rows for v in sorted(row, key=lambda w:pos[w][0])],1)}
+    # Branch-aware spatial numbering: finish the left branch before the right.
+    # Only displayed labels change; node identities, positions, edges, and seeds stay fixed.
+    # Left branch (top to bottom): 1–9; right branch (top to bottom): 10–16.
+    label_order = (4, 8, 3, 7, 2, 1, 5, 6, 9,
+                   15, 16, 12, 11, 10, 14, 13)
+    labels = {node: str(i) for i, node in enumerate(label_order, 1)}
     return g, pos, labels, {inv['7'], inv['5']}
 
 
