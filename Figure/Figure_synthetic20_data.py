@@ -1,4 +1,4 @@
-#Figure 2 data
+
 """Serial SEAMLESS robustness analysis: 10 network types × 20 replicates × 100 attacks.
 Requires the original, unchanged seamless_robustness.py alongside this script.
 Output: results_synthetic/summary_synthetic_backup.csv (16 columns).
