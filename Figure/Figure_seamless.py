@@ -1,4 +1,4 @@
-#Figure 1
+
 """
 SEAMLESS Figure 1: toy-model illustration and existing PPI results.
 
@@ -31,7 +31,7 @@ import networkx as nx
 import numpy as np
 import pandas as pd
 from matplotlib.cm import ScalarMappable
-from matplotlib.colors import LinearSegmentedColormap, Normalize
+from matplotlib.colors import LinearSegmentedColormap, Normalize, to_rgb
 
 ROOT = Path(__file__).resolve().parent if '__file__' in globals() else Path.cwd()
 RESULTS = ROOT / 'results_PPI' / 'results_PPI_880447'
@@ -61,16 +61,20 @@ def toy_network():
                       (6,7),(6,10),(6,11),(7,8),(9,10),(10,11),(10,14),
                       (11,12),(12,16),(13,14),(15,16)])
     pos = nx.spring_layout(g, seed=23, k=.65, iterations=500, scale=3)
-    # Preserve the original manual positioning of nodes 12, 16, and 15.
-    for i, node in enumerate((12, 16, 15), 1):
-        pos[node] = np.asarray(pos[11]) + i * np.array([.45, .72])
-    # Branch-aware spatial numbering: finish the left branch before the right.
-    # Only displayed labels change; node identities, positions, edges, and seeds stay fixed.
-    # Left branch (top to bottom): 1–9; right branch (top to bottom): 10–16.
-    label_order = (4, 8, 3, 7, 2, 1, 5, 6, 9,
-                   15, 16, 12, 11, 10, 14, 13)
-    labels = {node: str(i) for i, node in enumerate(label_order, 1)}
-    return g, pos, labels, {2, 15}
+    mapping = {4:'1',8:'2',3:'3',7:'4',15:'5',1:'6',2:'7',5:'8',6:'9',
+               11:'10',12:'11',16:'12',9:'13',10:'14',14:'15',13:'16'}
+    inv = {v:k for k,v in mapping.items()}
+    for i, name in enumerate(('11','12','5'), 1):
+        pos[inv[name]] = np.asarray(pos[inv['10']]) + i*np.array([.45,.72])
+    rows = []
+    for u in sorted(pos, key=lambda v: (-pos[v][1], pos[v][0])):
+        if rows and abs(pos[u][1] - np.mean([pos[v][1] for v in rows[-1]])) <= .55:
+            rows[-1].append(u)
+        else:
+            rows.append([u])
+    labels = {u:str(i) for i,u in enumerate(
+        [v for row in rows for v in sorted(row, key=lambda w:pos[w][0])],1)}
+    return g, pos, labels, {inv['7'], inv['5']}
 
 
 def draw_network(ax, g, pos, seeds, candidates, explored, queried,
@@ -94,6 +98,7 @@ def draw_network(ax, g, pos, seeds, candidates, explored, queried,
             for u, s in scores.items()
         }
     sizes = (845,793,728,728) if toy else (86,86,70,70)
+    colors = {}
     for nodes, color, size in ((set(g)-seeds-candidates-explored,GRAY,sizes[3]),
                                (explored,BLUE,sizes[2]),(candidates-seeds,RED,sizes[1]),
                                (seeds,GREEN,sizes[0])):
@@ -103,15 +108,15 @@ def draw_network(ax, g, pos, seeds, candidates, explored, queried,
                    for u in sorted(nodes)]
         nx.draw_networkx_nodes(g,pos,nodelist=sorted(nodes),node_color=palette,
                                node_size=size,linewidths=0,ax=ax)
+        colors.update(zip(sorted(nodes),palette))
     if toy:
-        # Candidate labels remain white even when their scored fill is pale red.
-        # Unexplored gray nodes always use dark labels.
         for u in g:
-            white = u in seeds or u in candidates or u in explored
-            nx.draw_networkx_labels(
-                g, pos, {u: labels[u]}, font_size=18, font_weight='bold',
-                font_color='white' if white else '#263238', ax=ax
-            )
+            rgb = np.array(to_rgb(colors[u]))
+            linear = np.where(rgb<=.04045,rgb/12.92,((rgb+.055)/1.055)**2.4)
+            white = linear @ np.array([.2126,.7152,.0722]) < .4 or (
+                stage!='seeds' and labels[u] in {'4','8','11','7'})
+            nx.draw_networkx_labels(g,pos,{u:labels[u]},font_size=18,
+                                    font_weight='bold',font_color='white' if white else '#263238',ax=ax)
     ax.set_axis_off()
 
 
@@ -128,9 +133,8 @@ def draw_toy(ax, stage, letter, toy):
                 else set())-seeds-candidates
     queried = (seeds|candidates|first if stage=='scored' else seeds|candidates
                if stage=='first_neighbors' else seeds if stage=='candidates' else set())
-    scores = {u: score(g, u) for u in candidates} if stage == 'scored' else None
     draw_network(ax,g,pos,seeds,candidates,explored,queried,
-                 scores,labels,stage)
+                 {u:score(g,u) for u in candidates},labels,stage)
     xy = np.array(list(pos.values()))
     center = (xy.min(0)+xy.max(0))/2
     radius=np.ptp(xy,axis=0).max()/2+.4
@@ -155,7 +159,7 @@ def load_results():
     g = nx.read_edgelist(EDGES, nodetype=int)
     g.remove_edges_from(nx.selfloop_edges(g))
     g = g.subgraph(max(nx.connected_components(g), key=len)).copy()
-
+ 
     # One reproducible attack solely to visualize Panel E.
     rng = np.random.default_rng(int(config.get('seed', 12345)))
     remaining = g.copy()
@@ -228,7 +232,7 @@ def main():
         cax=cax, orientation='horizontal'
     )
     cb.set_ticks([])
-
+    
     fig.text(box2.x1, .49, 'E', ha='right', va='top',
              fontsize=26, fontweight='bold')
 

@@ -1,3 +1,4 @@
+
 """
 Figure_PPI: PPI adaptive fragility and biological associations.
 
@@ -10,6 +11,7 @@ Output: seamless_figures/PPI.svg (Panels A-E).
 """
 
 from __future__ import annotations
+import json
 import re
 from pathlib import Path
 import matplotlib.pyplot as plt
@@ -25,7 +27,6 @@ from scipy.stats import linregress, mannwhitneyu
 # ============================================================
 BASE_DIR = Path.cwd()
 PPI_SI_DIR = BASE_DIR / 'benchmarks' / 'PPI_SI'
-PPI_NETWORK_DIR = BASE_DIR / 'benchmarks' / 'PPI'
 RESULTS_DIR = BASE_DIR / 'results_PPI'
 SPECIES_FILE = PPI_SI_DIR / 'treeoflife.species.tsv'
 REGULATORY_FILE = PPI_SI_DIR / 'treeoflife.species.regulatorygenes.xls'
@@ -212,36 +213,34 @@ def match_table_to_species_id(df: pd.DataFrame, *, name_column: str, name_map: p
     matched['Species_ID'] = matched['Species_ID'].apply(clean_species_id)
     return matched
 
-def _count_unique_nodes_from_edge_file(edge_path: Path) -> int | None:
-    nodes: set[str] = set()
-    try:
-        with edge_path.open('r', encoding='utf-8', errors='ignore') as handle:
-            for line in handle:
-                line = line.strip()
-                if not line or line.startswith('#'):
-                    continue
-                parts = re.split('[\\s,;]+', line)
-                if len(parts) < 2:
-                    continue
-                nodes.add(str(parts[0]).strip())
-                nodes.add(str(parts[1]).strip())
-    except Exception as exc:
-        print(f'[WARNING] Failed to read PPI edge file {edge_path}: {exc}')
+def ppi_result_species_id(folder_name: str) -> str | None:
+    """Recognize results_PPI_<id> and results_PPI_full_<id>."""
+    match = re.fullmatch(r'results_PPI_(?:full_)?(.+)', folder_name, flags=re.IGNORECASE)
+    if match is None:
         return None
-    return int(len(nodes)) if nodes else None
+    species_id = clean_species_id(match.group(1))
+    return str(species_id) if pd.notna(species_id) else None
 
-def panel_3_5_eligible_species_ids(display_df, regulatory_feature, environment_feature):
-    """Match the reference script's global marker-normalization population."""
-    result_ids = set()
-    for folder in RESULTS_DIR.iterdir():
+def find_ppi_result_folders(results_dir: Path) -> dict[str, Path]:
+    """Index available PPI result folders once, keyed by species ID."""
+    folders = {}
+    for folder in sorted(results_dir.iterdir(), key=lambda path: path.name.lower()):
         if not folder.is_dir():
             continue
-        match = re.fullmatch(r'results_PPI_(.+)', folder.name)
-        if match is not None and (folder / 'summary.csv').exists():
-            species_id = clean_species_id(match.group(1))
-            if pd.notna(species_id):
-                result_ids.add(str(species_id))
+        species_id = ppi_result_species_id(folder.name)
+        if species_id is None or not (folder / 'summary.csv').is_file():
+            continue
+        if species_id in folders:
+            print(f'[WARNING] Duplicate result folder for species {species_id}; '
+                  f'using {folders[species_id]}, ignoring {folder}')
+            continue
+        folders[species_id] = folder
+    return folders
 
+
+def panel_3_5_eligible_species_ids(display_df, regulatory_feature,
+                                   environment_feature, result_ids):
+    """Preserve the reference marker-normalization population."""
     biological = (
         display_df[['Species_ID']].drop_duplicates('Species_ID')
         .merge(regulatory_feature[['Species_ID', 'Fraction_regulatory_genes']],
@@ -257,38 +256,37 @@ def panel_3_5_eligible_species_ids(display_df, regulatory_feature, environment_f
         biological[feature_columns].notna().any(axis=1), 'Species_ID'
     ].dropna().astype(str))
     display_ids = set(display_df['Species_ID'].dropna().astype(str))
-    return sorted(result_ids & display_ids & biological_ids,
+    return sorted(set(result_ids) & display_ids & biological_ids,
                   key=species_id_sort_key)
 
 
-def collect_ppi_network_node_counts(eligible_species_ids):
-    """Read each current PPI edge file once; do not cache node counts."""
+def collect_ppi_network_node_counts(eligible_species_ids, result_folders):
+    """Read config.json n_nodes; scale markers globally across eligible species."""
     rows = []
     for species_id in eligible_species_ids:
-        sid = str(species_id)
-        path = PPI_NETWORK_DIR / f'{sid}.edges'
-        if not path.is_file():
-            print(f'[WARNING] Skipped species {sid}: missing PPI edge file {path}')
+        folder = result_folders.get(str(species_id))
+        if folder is None:
             continue
-        count = _count_unique_nodes_from_edge_file(path)
-        if count is None or count == 0:
-            print(f'[WARNING] Skipped species {sid}: no valid nodes in {path}')
+        config_path = folder / 'config.json'
+        if not config_path.is_file():
+            print(f'[WARNING] Skipped species {species_id}: missing {config_path}')
             continue
-        rows.append({'Species_ID': sid, NETWORK_N_COL: float(count)})
+        try:
+            with config_path.open('r', encoding='utf-8') as handle:
+                count = int(json.load(handle)['n_nodes'])
+            if count <= 0:
+                raise ValueError(f'n_nodes must be positive, got {count}')
+        except (OSError, UnicodeError, ValueError, TypeError, KeyError) as exc:
+            print(f'[WARNING] Skipped species {species_id}: invalid {config_path}: {exc}')
+            continue
+        rows.append({'Species_ID': str(species_id), NETWORK_N_COL: float(count)})
     if not rows:
-        raise RuntimeError('No eligible PPI edge files found.')
-    result = pd.DataFrame(rows).drop_duplicates('Species_ID')
-    # Apply one global network-size-to-marker-area mapping across Panels C-E.
-    # Match the uploaded PPI reference global linear min-max scaling (90-260 pt^2).
+        raise RuntimeError(f'No valid PPI config.json node counts found in {RESULTS_DIR}.')
+    result = pd.DataFrame(rows)
     counts = result[NETWORK_N_COL].to_numpy(dtype=float)
-    global_n_min = float(counts.min())
-    global_n_max = float(counts.max())
-    if global_n_max > global_n_min:
-        result[MARKER_SIZE_COL] = (
-            NODE_SIZE_MIN
-            + (counts - global_n_min) / (global_n_max - global_n_min)
-            * (NODE_SIZE_MAX - NODE_SIZE_MIN)
-        )
+    lo, hi = float(counts.min()), float(counts.max())
+    if hi > lo:
+        result[MARKER_SIZE_COL] = NODE_SIZE_MIN + (counts - lo) / (hi - lo) * (NODE_SIZE_MAX - NODE_SIZE_MIN)
     else:
         result[MARKER_SIZE_COL] = (NODE_SIZE_MIN + NODE_SIZE_MAX) / 2.0
     return result
@@ -351,7 +349,7 @@ def build_environment_features(frame, name_map):
     matched = match_table_to_species_id(frame, name_column='Environment_species_name', name_map=name_map)
     return matched[['Species_ID', 'Co_habitation_index', 'Environmental_scope_index', 'Habitat', 'Oxygen']].dropna(subset=['Species_ID']).sort_values('Species_ID').drop_duplicates('Species_ID')
 
-def load_protocol_results(results_dir: Path, eligible_species_ids):
+def load_protocol_results(result_folders: dict[str, Path], eligible_species_ids):
     """Load each available attack protocol independently for every PPI species.
     The six-protocol intersection is used only by compare_protocols(),
     never to restrict the SEAMLESS species shown in Panels A-E.
@@ -359,12 +357,10 @@ def load_protocol_results(results_dir: Path, eligible_species_ids):
     eligible = set(map(str, eligible_species_ids))
     records = {protocol: [] for protocol in PROTOCOLS}
     curves = {'seamless': {}}
-    for summary_file in sorted(results_dir.glob('results_PPI_*/summary.csv')):
-        species_id = clean_species_id(
-            summary_file.parent.name.removeprefix('results_PPI_')
-        )
+    for species_id, folder in result_folders.items():
         if species_id not in eligible:
             continue
+        summary_file = folder / 'summary.csv'
         try:
             frame = normalize_summary(pd.read_csv(summary_file), summary_file)
         except (OSError, UnicodeError, pd.errors.ParserError,
@@ -447,7 +443,7 @@ def linear_regression_statistics(df: pd.DataFrame, x_col: str, y_col: str, *, pr
     k = 3
     aic = 2.0 * k - 2.0 * log_likelihood
     bic = np.log(n) * k - 2.0 * log_likelihood
-    return {'slope': float(result.slope), 'intercept': float(result.intercept), 'r_squared': float(result.rvalue ** 2), 'p_value': float(result.pvalue), 'n': n, 'rss': rss, 'log_likelihood': float(log_likelihood), 'aic': float(aic), 'bic': float(bic)}
+    return {'slope': float(result.slope), 'intercept': float(result.intercept), 'r_squared': float(result.rvalue ** 2), 'p_value': float(result.pvalue), 'n': n, 'aic': float(aic), 'bic': float(bic)}
 
 def representative_species(data):
     required = ['Compact_name', METRIC_COL, 'Fraction_regulatory_genes', 'Co_habitation_index', 'Environmental_scope_index', NETWORK_N_COL, MARKER_SIZE_COL]
@@ -888,7 +884,7 @@ def report_panel_species_sets(panel_data: dict, selected: pd.DataFrame) -> None:
 # ============================================================
 def main():
     configure_matplotlib()
-    for path in (SPECIES_FILE, REGULATORY_FILE, ENVIRONMENT_FILE, PPI_NETWORK_DIR, RESULTS_DIR):
+    for path in (SPECIES_FILE, REGULATORY_FILE, ENVIRONMENT_FILE, RESULTS_DIR):
         if not path.exists():
             raise FileNotFoundError(f'Required path not found: {path}')
     species = pd.read_csv(SPECIES_FILE, sep='\t')
@@ -900,13 +896,13 @@ def main():
                 .merge(environment[['Species_ID', 'Co_habitation_index',
                                     'Environmental_scope_index', 'Habitat', 'Oxygen']],
                        on='Species_ID', how='left'))
-    network_species = {path.stem for path in PPI_NETWORK_DIR.glob('*.edges')}
-    ppi_species = set(features['Species_ID'].dropna().astype(str)) & network_species
-    metrics, curves = load_protocol_results(RESULTS_DIR, ppi_species)
+    result_folders = find_ppi_result_folders(RESULTS_DIR)
+    ppi_species = set(features['Species_ID'].dropna().astype(str)) & set(result_folders)
+    metrics, curves = load_protocol_results(result_folders, ppi_species)
     if metrics['seamless'].empty:
         raise RuntimeError('No valid SEAMLESS (m=4) results were found.')
-    eligible_ids = panel_3_5_eligible_species_ids(names, regulatory, environment)
-    nodes = collect_ppi_network_node_counts(eligible_ids)
+    eligible_ids = panel_3_5_eligible_species_ids(names, regulatory, environment, result_folders)
+    nodes = collect_ppi_network_node_counts(eligible_ids, result_folders)
     features = features.merge(
         nodes[['Species_ID', NETWORK_N_COL, MARKER_SIZE_COL]],
         on='Species_ID', how='left'
