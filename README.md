@@ -1,6 +1,6 @@
 # SEAMLESS
 
-This repository provides the code and data for **SEAMLESS**, a locally adaptive network dismantling method based on edge-neighborhood dissimilarity.
+This repository provides the code and data for **SEAMLESS**, a locally adaptive network dismantling method.
 
 This work is from **CoMuNe Lab**, led by [Prof. Manlio De Domenico](https://manliodedomenico.com/).
 ## Code
