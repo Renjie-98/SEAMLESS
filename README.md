@@ -15,14 +15,14 @@ The `Figure/` folder contains scripts used to produce the figures and analyze th
 
 - **`Figure_seamless.py`** — Illustrates the SEAMLESS procedure and example dismantling results.
 - **`Figure_synthetic20.py`** — Analyzes SEAMLESS on synthetic networks, including local exploration and network fragmentation.
-- **`Figure_synthetic20_data.py`** — Generates the synthetic-network dismantling data used in the analysis.
+- **`Figure_synthetic20_data.py`** — Generates the synthetic network dismantling data used in the analysis.
 - **`Figure_Metabolic.py`** — Analyzes dismantling results and biological characteristics of metabolic networks.
 - **`Figure_PPI.py`** — Analyzes dismantling results and biological characteristics of protein–protein interaction (PPI) networks.
 - **`Figure_bio_curve.py`** — Plots dismantling curves for metabolic and PPI networks.
-- **`Figure_evolution.py`** — Visualizes network evolution, structural fragility, and efficiency.
+- **`Figure_evolution.py`** — Visualizes network evolution, fragility, and efficiency.
 - **`Figure_evolution_data.py`** — Generates network evolution simulation data.
-- **`Figure_SI1.py`** — Compares dismantling performance, runtime, and computational complexity.
-- **`Figure_SI1_data.py`** — Measures runtime for the six dismantling strategies.
+- **`Figure_SI1.py`** — Compares synthetic-network dismantling performance, runtime, and computational complexity.
+- **`Figure_SI1_data.py`** — Measures synthetic-network runtime for the six dismantling strategies.
 
 ## Data
 
