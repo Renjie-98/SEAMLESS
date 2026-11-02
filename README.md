@@ -2,7 +2,8 @@
 
 This repository provides the code and data for **SEAMLESS**, a locally adaptive network dismantling method.
 
-This work is from **CoMuNe Lab**, led by [Prof. Manlio De Domenico](https://manliodedomenico.com/).
+This work is from [CoMuNe Lab](https://manliodedomenico.com/).
+
 ## Code
 
 - **`seamless_robustness.py`** — Implements SEAMLESS and five comparison strategies (random, degree, adaptive degree, betweenness, and adaptive betweenness). Evaluates network fragmentation through the largest and second-largest connected components (`S1/N` and `S2/N`).
